@@ -133,7 +133,7 @@ function baseForm(){attachId=null;pending=[];hasVehicle=null;attachMsg.classList
 function pendingBox(id){let b=document.getElementById(id);b.innerHTML=pending.map(m=>m.type.startsWith('image')?`<img class="thumb" style="margin-top:8px" src="${m.url}">`:`<div class="notice">🎥 ${esc(m.name||'Vídeo')}</div>`).join('')}
 function openNew(){baseForm();formTitle.textContent='Nova ocorrência';eventForm.classList.add('on')}
 function newPhoto(){camMode='photo';openCamera()}
-function newVideo(){pendingVideoVehicle=undefined;videoClassChoice.classList.add('on')}
+function newVideo(){pendingVideoVehicle=null;videoClassChoice.classList.remove('on');camMode='video';openCamera()}
 function cancelVideoClassChoice(){pendingVideoVehicle=undefined;videoClassChoice.classList.remove('on')}
 function startVideoWithClassification(v){pendingVideoVehicle=v;videoClassChoice.classList.remove('on');camMode='video';openCamera()}
 function galleryNew(files){pending=[...files].map(f=>({id:uid(),blob:f,type:f.type,name:f.name,url:URL.createObjectURL(f)}));openNew();pendingBox('pending')}
